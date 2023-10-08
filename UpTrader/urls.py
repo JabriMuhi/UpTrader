@@ -17,11 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from menuapp.views import menu_view
+from menuapp.views import MenuItemDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', menu_view, name='menu'),
+    path('menu/', MenuItemDetailView.as_view(), name='menu'),
+    path('menu/<slug:item_url>/', MenuItemDetailView.as_view(), name='menu')
 ]
 
 
